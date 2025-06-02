@@ -10,11 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+    // Ambil data user berdasarkan username
+    $cek = "SELECT * FROM users WHERE username='$username'";
+    $query = mysqli_query($con, $cek);
+    $result = mysqli_fetch_array($query);
 
-    $cek = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $result = mysqli_fetch_array(mysqli_query($con, $cek));
-
-    if (isset($result)) {
+    if ($result && password_verify($password, $result['password'])) {
         $response['flag'] = 1;
         $response['message'] = "Login berhasil";
         echo json_encode($response);

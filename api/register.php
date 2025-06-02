@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $password = $_POST['password'];
     $nama = $_POST['nama'];
 
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     $cek = "SELECT * FROM users WHERE username='$username'";
     $result = mysqli_fetch_array(mysqli_query($con, $cek));
@@ -21,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $response['message'] = "Username sudah tersedia";
         echo json_encode($response); 
     } else {
-        $sql = "INSERT INTO users VALUE(NULL, '$username', '$password', '$nama', '1', NOW())";
+        $sql = "INSERT INTO users VALUE(NULL, '$username', '$hashed_password', '$nama', '1', NOW())";
         $insert = mysqli_query($con, $sql);
         if ($insert) {
             $response['flag'] = 1;
