@@ -1,9 +1,11 @@
 <?php
+// User login
+
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 
-require "../config/connect.php";
+require "../../config/connect.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $response = array();
