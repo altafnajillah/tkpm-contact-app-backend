@@ -2,7 +2,7 @@
 
 ## Skema Database
 
-Buat database baru kemudian import scema database menggunakan file `tkpm_contact_app.sql`
+Buat database baru kemudian import schema database menggunakan file `tkpm_contact_app.sql`
 
 Note:
 - Semua user default sandinya `password`
