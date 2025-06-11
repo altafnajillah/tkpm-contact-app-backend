@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($result && password_verify($password, $result['password'])) {
         $response['flag'] = 1;
         $response['message'] = "Login berhasil";
+        $response['id'] = $result['id'];
         echo json_encode($response);
     } else {
         $response['flag'] = 0;
